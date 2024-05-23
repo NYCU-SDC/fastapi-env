@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:13
+    container_name: postgres
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: fastapi
+    networks:
+      - intranet
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+  pgadmin4:
+    image: dpage/pgadmin4
+    container_name: pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=user@example.com
+      - PGADMIN_DEFAULT_PASSWORD=password
+    networks:
+      - intranet
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+  app:
+    build: ./
+    container_name: fastapt-app
+    networks:
+      - intranet
+    volumes:
+      - ./app:/code/app
+    ports:
+      - "8080:8000"
+
+networks:
+  intranet:
+    driver: bridge
+
+volumes:
+  postgres_data:
+
