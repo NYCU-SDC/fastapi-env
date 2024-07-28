@@ -24,12 +24,17 @@ The project is structured as follows:
     cd <repository_directory>
     ```
 
-2. **Build and start the application using Docker Compose**:
+2. **Make your own compose**:
+    ```bash
+    cp docker-compose.yaml.example docker-compose.yaml
+    ```
+
+3. **Build and start the application using Docker Compose**:
     ```bash
     docker-compose up --build -d
     ```
 
-3. **Access the FastAPI application**:
+4. **Access the FastAPI application**:
     The FastAPI application will be available at `http://localhost:8080`.
 
 ## Requirements
