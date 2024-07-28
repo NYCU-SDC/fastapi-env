@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.9'
 
 services:
   postgres:
@@ -15,11 +15,17 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
-  db:
+  mariadb:
     image: mariadb:10.6
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: notSecureChangeMe
+      MYSQL_ROOT_PASSWORD: rootpassword
+    networks:
+      - intranet
+    ports:
+      - "3306:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
 
   pgadmin4:
     image: dpage/pgadmin4
@@ -33,6 +39,20 @@ services:
       - "5050:80"
     depends_on:
       - postgres
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin_container
+    restart: always
+    environment:
+      PMA_HOST: mariadb
+      MYSQL_ROOT_PASSWORD: rootpassword
+    networks:
+      - intranet
+    ports:
+      - "8081:80"
+    depends_on:
+      - mariadb
 
   app:
     build: ./
@@ -51,4 +71,3 @@ networks:
 volumes:
   postgres_data:
   mariadb_data:
-
