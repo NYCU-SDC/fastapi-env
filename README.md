@@ -1,6 +1,6 @@
-# Backend Training Program Environment
+# FastAPI Environment
 
-This project is designed specifically for the Backend Training Program. It aims to allow students to focus on learning FastAPI without worrying about environment setup. The project includes necessary configurations and dependencies to get started quickly and easily.
+This project is designed specifically for programs related to FastAPI. It aims to allow students to focus on learning FastAPI without worrying about environment setup. The project includes the necessary configurations and dependencies to start quickly and easily.
 
 ## Prerequisites
 
