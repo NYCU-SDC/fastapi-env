@@ -41,7 +41,7 @@ services:
       - postgres
 
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin
+    image: phpmyadmin
     container_name: phpmyadmin_container
     restart: always
     environment:
