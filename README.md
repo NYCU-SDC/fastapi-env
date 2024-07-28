@@ -64,7 +64,7 @@ The `docker-compose.yaml` file defines the services required for the application
 
 If you wish to contribute to this project, please follow these steps:
 
-1. Fork the repository.
+1. Clone this repository.
 2. Create a new branch (`git checkout -b feature/your-feature`).
 3. Commit your changes (`git commit -am 'Add new feature'`).
 4. Push to the branch (`git push origin feature/your-feature`).
