@@ -56,7 +56,7 @@ services:
 
   app:
     build: ./
-    container_name: fastapt-app
+    container_name: fastapi-app
     networks:
       - intranet
     volumes:
