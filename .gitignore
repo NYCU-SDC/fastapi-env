@@ -1,4 +1,5 @@
 venv
 .env
-app
+!app/.gitignore
 docker-compose.yaml
+*.bak

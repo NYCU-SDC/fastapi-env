@@ -6,7 +6,8 @@ This project is designed specifically for programs related to FastAPI. It aims t
 
 Make sure you have the following software installed on your machine:
 
-- Docker Desktop
+- Git
+- Docker Desktop or Docker Engine
 
 ## Project Structure
 
@@ -15,6 +16,7 @@ The project is structured as follows:
 - `requirements.txt`: Lists the Python dependencies required for the project.
 - `Dockerfile`: Contains the instructions to build the Docker image for the FastAPI application.
 - `docker-compose.yaml`: Defines the services and configurations for running the project using Docker Compose.
+- `app/`: Directory containing the FastAPI application code.
 
 ## Setup Instructions
 
