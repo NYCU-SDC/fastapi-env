@@ -1,5 +1,5 @@
 venv
 .env
-!app/.gitignore
+app/*
 docker-compose.yaml
 *.bak
