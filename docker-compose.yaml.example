@@ -3,7 +3,7 @@ version: '3.9'
 services:
   postgres:
     image: postgres:13
-    container_name: postgres
+    container_name: sdc_postgres
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
@@ -17,19 +17,18 @@ services:
 
   mariadb:
     image: mariadb:10.6
+    container_name: sdc_mariadb
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
     networks:
       - intranet
-    ports:
-      - "3306:3306"
     volumes:
       - mariadb_data:/var/lib/mysql
 
   pgadmin4:
     image: dpage/pgadmin4
-    container_name: pgadmin4
+    container_name: sdc_pgadmin4
     environment:
       - PGADMIN_DEFAULT_EMAIL=user@example.com
       - PGADMIN_DEFAULT_PASSWORD=password
@@ -42,7 +41,7 @@ services:
 
   phpmyadmin:
     image: phpmyadmin
-    container_name: phpmyadmin_container
+    container_name: sdc_phpmyadmin
     restart: always
     environment:
       PMA_HOST: mariadb
@@ -56,7 +55,8 @@ services:
 
   app:
     build: ./
-    container_name: fastapi-app
+    container_name: sdc_fastapi_app
+    restart: always
     networks:
       - intranet
     volumes:
