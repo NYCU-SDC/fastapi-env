@@ -26,28 +26,28 @@ The project is structured as follows:
     cd <repository_directory>
     ```
 
-2. **Make your own compose**:
-    ```bash
-    cp docker-compose.yaml.example docker-compose.yaml
-    ```
-
-3. **Build and start the application using Docker Compose**:
+2. **Build and start the application using Docker Compose**:
     ```bash
     docker-compose up --build -d
     ```
 
+3. **Build Hello World App**:
+- Create a directory `fastapi-env/app`
+- Create a file `app/main.py`
+- Paste Hello World code.
+    ```python
+    from fastapi import FastAPI
+
+    app = FastAPI()
+
+
+    @app.get("/")
+    async def root():
+        return {"message": "Hello World"}
+    ```
+
 4. **Access the FastAPI application**:
     The FastAPI application will be available at `http://localhost:8080`.
-
-## Requirements
-
-The `requirements.txt` file includes the following dependencies:
-
-```plaintext
-fastapi>=0.111.0
-pydantic>=2.7.0
-uvicorn>=0.29.0
-```
 
 ## Dockerfile
 
@@ -66,16 +66,6 @@ The `docker-compose.yaml` file defines the services required for the application
 - The FastAPI service, built from the Dockerfile.
 - Configuration for environment variables and port mappings.
 - PostgreSQL database service and PGAdmin4.
-
-## Contributing
-
-If you wish to contribute to this project, please follow these steps:
-
-1. Clone this repository.
-2. Create a new branch (`git checkout -b feature/your-feature`).
-3. Commit your changes (`git commit -am 'Add new feature'`).
-4. Push to the branch (`git push origin feature/your-feature`).
-5. Create a new Pull Request.
 
 ## Contact
 
