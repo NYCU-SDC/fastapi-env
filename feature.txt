@@ -1,2 +1,3 @@
 New Feature in dev_1.0
 Make some changes in remote
+Make another changes in remote
