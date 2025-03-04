@@ -3,3 +3,5 @@ venv
 backend_fastapi/app/
 frontend_vue/app/
 *.bak
+app/*
+patches/*
