@@ -66,7 +66,7 @@ services:
   #   depends_on:
   #     - mariadb
   frontend-vue:
-    build: ./frontend_vue
+    image: node:22-bookworm
     container_name: sdc_vue_app
     working_dir: /code/app
     volumes:
