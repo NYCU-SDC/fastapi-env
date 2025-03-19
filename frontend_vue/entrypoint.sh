@@ -4,7 +4,7 @@
 if [ ! -d ".git" ]; then
     echo "Cloning repository..."
     git init
-    git remote add origin https://github.com/NYCU-SDC/main-branch-backend.git
+    git remote add origin https://github.com/leowu82/main-branch-frontend.git
     git pull origin main
     git checkout main
     git branch -d master
