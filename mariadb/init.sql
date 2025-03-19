@@ -1,0 +1,4 @@
+CREATE DATABASE IF NOT EXISTS sdc_learn;
+CREATE USER IF NOT EXISTS 'sdc_learn'@'%' IDENTIFIED BY 'sdc_learn';
+GRANT ALL PRIVILEGES ON sdc_learn.* TO 'sdc_learn'@'%';
+FLUSH PRIVILEGES;

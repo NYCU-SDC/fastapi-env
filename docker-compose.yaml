@@ -1,73 +1,85 @@
-version: '3.9'
-
 services:
-  postgres:
-    image: postgres:13
-    container_name: sdc_postgres
-    environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: fastapi
-    networks:
-      - intranet
-    ports:
-      - "5432:5432"
+  # postgres:
+  #   image: postgres:13
+  #   container_name: sdc_postgres
+  #   environment:
+  #     POSTGRES_USER: user
+  #     POSTGRES_PASSWORD: password
+  #     POSTGRES_DB: fastapi
+  #   networks:
+  #     - intranet
+  #   ports:
+  #     - "5432:5432"
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+
+  # mariadb:
+  #   image: mariadb:10.6
+  #   container_name: sdc_mariadb
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: rootpassword
+  #   networks:
+  #     - intranet
+  #   volumes:
+  #     - mariadb_data:/var/lib/mysql
+  #     - ./mariadb/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+
+  # pgadmin4:
+  #   image: dpage/pgadmin4
+  #   container_name: sdc_pgadmin4
+  #   environment:
+  #     - PGADMIN_DEFAULT_EMAIL=user@example.com
+  #     - PGADMIN_DEFAULT_PASSWORD=password
+  #   networks:
+  #     - intranet
+  #   ports:
+  #     - "5050:80"
+  #   depends_on:
+  #     - postgres
+
+  # phpmyadmin:
+  #   image: phpmyadmin
+  #   container_name: sdc_phpmyadmin
+  #   environment:
+  #     PMA_HOST: mariadb
+  #     MYSQL_ROOT_PASSWORD: rootpassword
+  #   networks:
+  #     - intranet
+  #   ports:
+  #     - "8081:80"
+  #   depends_on:
+  #     - mariadb
+
+  # backend-fastapi:
+  #   image: python:3.10
+  #   container_name: sdc_fastapi_app
+  #   working_dir: /code/app
+  #   networks:
+  #     - intranet
+  #   volumes:
+  #     - ./backend_fastapi/app:/code/app
+  #     - ./backend_fastapi/entrypoint.sh:/code/entrypoint.sh
+  #   ports:
+  #     - "8000:8000"
+  #   entrypoint: ["/code/entrypoint.sh"]
+  #   depends_on:
+  #     - mariadb
+  frontend-vue:
+    image: node:22-bookworm
+    container_name: sdc_vue_app
+    working_dir: /code/app
     volumes:
-      - postgres_data:/var/lib/postgresql/data
-
-  mariadb:
-    image: mariadb:10.6
-    container_name: sdc_mariadb
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-    networks:
-      - intranet
-    volumes:
-      - mariadb_data:/var/lib/mysql
-
-  pgadmin4:
-    image: dpage/pgadmin4
-    container_name: sdc_pgadmin4
-    environment:
-      - PGADMIN_DEFAULT_EMAIL=user@example.com
-      - PGADMIN_DEFAULT_PASSWORD=password
-    networks:
-      - intranet
+      - ./frontend_vue/app:/code/app
+      - ./frontend_vue/entrypoint.sh:/code/entrypoint.sh
     ports:
-      - "5050:80"
-    depends_on:
-      - postgres
+      - "8080:8080"
+    entrypoint: ["/code/entrypoint.sh"]
 
-  phpmyadmin:
-    image: phpmyadmin
-    container_name: sdc_phpmyadmin
-    restart: always
-    environment:
-      PMA_HOST: mariadb
-      MYSQL_ROOT_PASSWORD: rootpassword
-    networks:
-      - intranet
-    ports:
-      - "8081:80"
-    depends_on:
-      - mariadb
+# networks:
+#   intranet:
+#     driver: bridge
 
-  app:
-    build: ./
-    container_name: sdc_fastapi_app
-    restart: always
-    networks:
-      - intranet
-    volumes:
-      - ./app:/code/app
-    ports:
-      - "8080:8000"
-
-networks:
-  intranet:
-    driver: bridge
-
-volumes:
-  postgres_data:
-  mariadb_data:
+# volumes:
+#   postgres_data:
+  # mariadb_data:
